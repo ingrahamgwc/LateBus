@@ -7,13 +7,9 @@
 <body>
     <div id="app">
         <h1>1006</h1>
-        <p> {{ data.bus1006[1][0] }}</p>
-        <p>Predicted: {{ data.bus1006[1][2] }}</p>
-        <p>Scheduled: {{ data.bus1006[1][1] }}</p>
-
-        <p> {{ data.bus1006[2][0] }}</p>
-        <p>Predicted: {{ data.bus1006[2][2] }}</p>
-        <p>Scheduled: {{ data.bus1006[2][1] }}</p>
+        <ul>
+            <li v-for="stop in data.bus1006" v-text="stop[0]">{{stop}}</li>
+        </ul>
         <a href="reportBusStatus.html"><button>Report Bus Status</button></a>
     </div>
     <script src="https://unpkg.com/vue"></script>
