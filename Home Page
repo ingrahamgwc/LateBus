@@ -13,7 +13,6 @@
   <h1>LateBus Home page. You have already logged in.</h1>
   <h1>LateBus</h1>
   <div id="app">
-    <p>Some of the data is fake</p>
     <a href="bus1002.html"><h2>1002</h2></a>
     <a href="bus1003.html"/><h2>1003</h2></a>
     <a href="bus1004.html"/><h2>1004</h2></a>
