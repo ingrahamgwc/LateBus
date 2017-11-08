@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<title>Help?</title>
+		<style>
+		</style> 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	</head>
+	<body>
+		<h1>Help</h1> 
+		<!-- nav bar -->
+		<h3> How do I find my stop? </h3>
+		<p> Go to the home page, select your bus, and find your stop in the dropdown menu. </p>
+		<h3> Why is the chat empty? </h3>
+		<p> The chat is probably refreshed every week. </p>
+		<p> Still have questions? Contact us! </p>
+		
+	</body>

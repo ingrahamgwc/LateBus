@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<title>About</title>
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<div id="navbar">
+		<!-- nav bar -->
+		<h1>About us</h1>
+		<div>
+		<p>This website was created by the Ingraham Girls Who Code. They meet on Wednesdays in Room 202.</p>
+		</div>
+	</body>
+</html>
