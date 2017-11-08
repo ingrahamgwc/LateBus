@@ -1,15 +1,31 @@
 new Vue({
   el: '#app',
   data: {
-    message: 'Some of this data is fake',
-    data: {
-      bus1006: [["Garfield HS LZ 400 23rd AVE", "8:03", "predicted time", "latitude", "longitude"],
-      ["23rd AVE E @ E Aloha St", "8:03", "predicted time", "latitude", "longitude"],
-      ["35th Ave NE @ NE 65th St", "8:14", "predicted time", "latitude", "longitude"]],
-      bus1007: ["1007",
-        ["99th St"],
-        ["109th St"],
-        ["82nd St"]]
+    currentRoute: 1006,
+    bus: ["1003", "1004", "1005", "1006"],
+    route1006: {
+      name: "1006",
+      stops: [{
+        address: "Garfield HS LZ 400 23rd AVE",
+        schedTime: "8:03",
+        predTime: "predicted time",
+        lat: 1.00,
+        long: 2.4
+      },
+      {
+        address: "23rd AVE E @ E Aloha St",
+        schedTime: "8:03",
+        predTime: "predicted time",
+        lat: 1.00,
+        long: 2.4
+      },
+      {
+        address: "35th Ave NE @ NE 65th St",
+        schedTime: "8:14",
+        predTime: "predicted time",
+        lat: 1.00,
+        long: 2.4
+      },]
     }
   }
 })
