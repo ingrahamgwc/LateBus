@@ -15,13 +15,11 @@
 }
 </style>
   <title>LateBus Home</title>
-  <title>LateBus Home</title>
   <script src="vueJsTest.js"></script>
   <script src="https://unpkg.com/vue"></script> 
 </head>
 <body>
-  <h1>LateBus Home page. You have already logged in.</h1>
-  <h1>LateBus</h1>
+  <h1>LateBus Home page</h1>
   <div id="app">
     <a href="bus1002.html"><h2>1002</h2></a>
     <a href="bus1003.html"/><h2>1003</h2></a>
