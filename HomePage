@@ -5,12 +5,12 @@
     border-bottom-style: solid;
 }
 </style>
-  <title>LateBus Home</title>
-  <title>LateBus Home</title>
+  <title>LateBus</title>
   <script src="vueJsTest.js"></script>
   <script src="https://unpkg.com/vue"></script> 
 </head>
 <body>
+  <h1>Some of this data is fake</h1>
   <h1>LateBus Home page. You have already logged in.</h1>
   <h1>LateBus</h1>
   <div id="app">
