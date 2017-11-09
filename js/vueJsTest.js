@@ -25,7 +25,7 @@ new Vue({
         predTime: "predicted time",
         lat: 1.00,
         long: 2.4
-      },]
+      }]
     }
   }
 })
