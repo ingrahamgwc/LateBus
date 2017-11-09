@@ -1,23 +1,29 @@
 <html>
-
-<head>
-    <title>Your Route</title>
-</head>
-
-<body>
-    <div id="app">
-        <h1> {{ currentRoute }}</h1>
-        <ul>
-            <li v-for="stop in route1006.stops">
-                <p>{{ stop.address }} arriving at {{ stop.schedTime }}</p>
-                <p>Predicted: {{ stop.predTime }}</p>
-                <p>Scheduled: {{ stop.schedTime }}</p>
-            </li>
-        </ul>
+    <head>
+    <style>
+      button.accordion {
+        text-align: left;
+        transition: 0.4s;
+    }
+    div.panel {
+        display: none;
+    }
+      </style>
+    </head>
+    <body>
+      <div id="app">
+            <h1> {{ currentRoute }} </h1>
+        <div v-for="stop in route1006.stops">
+          <button class="accordion">{{ stop.address }} arriving at {{ stop.schedTime }}</button>
+          <div v-on:click="expand" class="panel">
+            <p>Predicted: {{ stop.predTime }}</p>
+            <p>Scheduled: {{ stop.schedTime }}</p>
+          </div>
+        </div>
         <a href="reportBusStatus.html"><button>Report Bus Status</button></a>
-    </div>
-    <script src="https://unpkg.com/vue"></script>
-    <script src="js\vueJsTest.js"></script>
-</body>
-
-</html>
+      </div>
+        <script src="https://unpkg.com/vue"></script>
+      <script src="js\vueJsTest.js"></script>
+    </body>
+    </html>
+    
