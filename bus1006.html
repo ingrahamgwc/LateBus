@@ -8,7 +8,11 @@
     <div id="app">
         <h1> {{ currentRoute }}</h1>
         <ul>
-            <li v-for="stop in route1006.stops">{{ stop.address }} arriving at {{ stop.schedTime }}</li>
+            <li v-for="stop in route1006.stops">
+                <p>{{ stop.address }} arriving at {{ stop.schedTime }}</p>
+                <p>Predicted: {{ stop.predTime }}</p>
+                <p>Scheduled: {{ stop.schedTime }}</p>
+            </li>
         </ul>
         <a href="reportBusStatus.html"><button>Report Bus Status</button></a>
     </div>
