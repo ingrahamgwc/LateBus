@@ -1,7 +1,7 @@
-var app = new Vue({
+var app = new Vue({  
   el: '#app',
   data: {
-    currentRoute: 1006,
+    currentRoute: document.location.search.substring(7),
     bus: ["1003", "1004", "1005", "1006"],
     route1006: {
       name: "1006",
@@ -31,6 +31,7 @@ var app = new Vue({
   methods: {
     expand: function (event) {
       console.log("hi" + event);
+      console.log(this);      
     }
   }
 })
