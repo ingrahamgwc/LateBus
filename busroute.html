@@ -2,15 +2,43 @@
 
 <head>
   <style>
+    body {
+      margin: 0;
+    }
+
     button.accordion {
+      border:none;
+      padding:2%;
       text-align: left;
       transition: 0.4s;
+      width: 100%;
+      outline: none;
+      background-color: #ffea9d;
+      cursor: pointer;
+    }
+
+    button.accordion:hover,
+    button.accordion.active {
+      background-color: #efca43;
     }
 
     div.panel {
       display: none;
     }
+
+    #statusBtnDiv {
+      text-align: center;
+      padding-top: 5%;
+    }
+
+    #statusBtn {
+      background-color: #efca43;
+      padding:1%;
+      text-decoration:none;
+      color:black;
+    }
   </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -25,10 +53,11 @@
         </div>
       </div>
     </div>
-
-    <a href="reportBusStatus.html">
-      <button>Report Bus Status</button>
-    </a>
+    <div id="statusBtnDiv">
+      <a id="statusBtn" href="reportBusStatus.html">
+        Report Bus Status
+      </a>
+    </div>
   </div>
   <script src="https://unpkg.com/vue"></script>
   <script src="https://unpkg.com/vue-router"></script>
