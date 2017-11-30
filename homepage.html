@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -16,23 +17,59 @@
     p {
       border-bottom-style: solid;
     }
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #efca43;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 20px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #000000;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        @media screen and (max-height: 450px) {
+          .sidenav {padding-top: 15px;}
+          .sidenav a {font-size: 18px;}
+        }
   </style>
   <title>LateBus Home</title>
-  <script src="vueJsTest.js"></script>
-  <script src="https://unpkg.com/vue"></script>
 </head>
 
 <body>
-  <h1>LateBus Home page</h1>
   <div id="app">
+    <navbar></navbar>      
+    <h1>LateBus Home page</h1>
     <a href="busroute.html?route=1002"><h2>1002</h2></a>
-    <a href="busroute.html?route=1003"/><h2>1003</h2></a>
-    <a href="busroute.html?route=1004"/><h2>1004</h2></a>
-    <a href="busroute.html?route=1006"/><h2>1006</h2></a>
+    <a href="busroute.html?route=1003"><h2>1003</h2></a>
+    <a href="busroute.html?route=1004"><h2>1004</h2></a>
+    <a href="busroute.html?route=1006"><h2>1006</h2></a>
   </div>
   <a href="reportBusStatus.html">
     <button> Report Bus Status</button>
   </a>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue-router"></script>
+  <script src="js\vueJsTest.js"></script>
 </body>
 
 </html>

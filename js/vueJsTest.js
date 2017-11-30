@@ -1,5 +1,24 @@
+Vue.component("navbar", {
+  template: "<div>\
+                <div id=\"mySidenav\" class=\"sidenav\">\
+                  <span style=\"cursor:pointer\" class=\"closebtn\" onclick=\"closeNav()\">&times;</span>\
+                  <a href=\"./homepage.html\">Home</a><a href=\"./about.html\">About</a>\
+                  <a href=\"./help.html\">Help</a><a href=\"./contact.html\">Contact</a>\
+                </div>\
+              <span style=\"font-size:30px;cursor:pointer\" onclick=\"openNav()\">&#9776; Home</span>\
+            </div>"
+});
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
 var app = new Vue({
-  el: '#app',
+  el: "#app", 
   data: {
     //Depends on ?route=number format
     currentRoute: document.location.search.substring(7),
@@ -151,7 +170,7 @@ var app = new Vue({
           long: 2.4
         }]
       }]
-  },
+  }, 
   methods: {
     expand: function (event) {
       /*console.log("hi" + HTMLDivElement);
@@ -166,7 +185,7 @@ var app = new Vue({
       }*/
     }
   }
-})
+});
 
 //to make the stop info expand down (thanks w3schools)
 var acc = document.getElementsByClassName("accordion");
