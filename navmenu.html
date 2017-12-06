@@ -9,16 +9,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <style>
         .sidenav {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #efca43;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 20px;
+			height: 100%;
+			width: 0;
+			position: fixed;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			background-color: #efca43;
+			overflow-x: hidden;
+			padding-top: 20px;
+			text-align: center;
+			margin: auto;
         }
 
         .sidenav a {
@@ -27,7 +28,7 @@
             font-size: 25px;
             color: #000000;
             display: block;
-            transition: 0.3s;
+			
         }
 
         .sidenav .closebtn {
@@ -58,15 +59,21 @@
   <a href="./contact.html">Contact</a>
 </div>
 
+<div id="pageBody">
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Home</span>
+</div>
 
 <script>
 function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("mySidenav").style.width = "100%";
+	document.getElementById("pageBody").style.opacity = "0.2";
+	document.getElementById("mySidenav").style.opacity = "0.8";
 }
 
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
+	document.getElementById("pageBody").style.opacity = "1";
+	document.getElementById("mySidenav").style.opacity = "0";
 }
 </script>
     
