@@ -1,5 +1,7 @@
  p {
       border-bottom-style: solid;
+	  font-family: sans-serif;
+		
     }
     .sidenav {
         height: 100%;
@@ -38,3 +40,5 @@
     .busbutton:hover, busbutton.active {
       background-color: #e0e0e0;
     }
+
+		
