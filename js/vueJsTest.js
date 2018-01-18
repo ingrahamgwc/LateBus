@@ -18,7 +18,7 @@ function closeNav() {
 }
 
 var app = new Vue({
-  el: "#app", 
+  el: "#app",
   data: {
     //Depends on ?route=number format
     currentRoute: document.location.search.substring(7),
@@ -170,8 +170,13 @@ var app = new Vue({
           long: 2.4
         }]
       }]
-  }, 
+  },
   methods: {
+    //listens to submitted comments
+    addComment: function (event) {
+      console.log("A comment was submitted!");
+      //call to serverless
+    },
     expand: function (event) {
       /*console.log("hi" + HTMLDivElement);
       this.style.display = "visible";
@@ -184,6 +189,20 @@ var app = new Vue({
         panel.style.display = "block";
       }*/
     }
+  }, 
+  // Go to the URL data has our data and display it
+  loadBusRoutes: function() {
+    // Store "this" so we can access our Vue object inside the asynchronous then() functions.
+    // By the time the data is returned from the cloud, loadBusRoutes() has exited, and our context is no longer the Vue object
+    // but "self" sticks around since it was defined here. This is a "closure".
+    let self = this;
+    
+    fetch( serverURL + "/bussy-mcbus").
+      then( function( response ) { if (response.ok) { return response.json(); }}).
+      then( function( data ) {
+        console.log( data );
+        self.buses = data.busRoutes;
+      });
   }
 });
 
@@ -200,3 +219,4 @@ for (var i = 0; i < acc.length; i++) {
     }
   }
 }
+

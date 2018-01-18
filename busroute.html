@@ -7,8 +7,8 @@
     }
 
     button.accordion {
-      border:none;
-      padding:2%;
+      border: none;
+      padding: 2%;
       text-align: left;
       transition: 0.4s;
       width: 100%;
@@ -33,9 +33,9 @@
 
     #statusBtn {
       background-color: #efca43;
-      padding:1%;
-      text-decoration:none;
-      color:black;
+      padding: 1%;
+      text-decoration: none;
+      color: black;
     }
   </style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,7 +43,7 @@
 
 <body>
   <div id="app">
-    <h1> {{ currentRoute }} </h1>
+    <h1 id="routeTitle"> {{ currentRoute }} </h1>
     <div v-for="bus in buses">
       <div v-for="stop in bus.stops" v-if="currentRoute == bus.name">
         <button v-on:click="expand(this)" class="accordion">{{ stop.address }} arriving at {{ stop.schedTime }}</button>
@@ -54,7 +54,7 @@
       </div>
     </div>
     <div id="statusBtnDiv">
-      <a id="statusBtn" href="reportBusStatus.html">
+      <a id="statusBtn" :href="'commentsTest.html?route='+currentRoute">
         Report Bus Status
       </a>
     </div>
