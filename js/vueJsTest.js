@@ -22,7 +22,7 @@ var app = new Vue({
   data: {
     //Depends on ?route=number format
     currentRoute: document.location.search.substring(7),
-    buses: 
+    buses: stopData
   },
   methods: {
     //listens to submitted comments
