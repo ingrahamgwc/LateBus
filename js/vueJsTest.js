@@ -1,3 +1,6 @@
+// my url --> let serverURL = "https://r3dnwi3z86.execute-api.us-east-1.amazonaws.com/dev";
+let serverURL = "https://i526t8ar6k.execute-api.us-west-2.amazonaws.com/dev/";
+
 Vue.component("navbar", {
   template: "<div>\
                 <div id=\"mySidenav\" class=\"sidenav\">\
@@ -20,6 +23,8 @@ function closeNav() {
 var app = new Vue({
   el: "#app",
   data: {
+    busComment: "",
+    busEvents:[],
     //Depends on ?route=number format
     currentRoute: document.location.search.substring(7),
     buses: [
@@ -77,7 +82,7 @@ var app = new Vue({
           predTime: "predicted time",
           lat: 47.6906124,
           long: -122.37680969999997
-          
+
         },
         {
           address: "NW 85th St @17th Ave NW",
@@ -196,21 +201,70 @@ var app = new Vue({
       } else {
         panel.style.display = "block";
       }*/
+
+    },
+    // Go to the URL data has our data and display it
+    /*getComments: function () {
+      // Store "this" so we can access our Vue object inside the asynchronous then() functions.
+      // By the time the data is returned from the cloud, loadBusRoutes() has exited, and our context is no longer the Vue object
+      // but "self" sticks around since it was defined here. This is a "closure".
+      let self = this;
+
+      fetch(serverURL + "/bussy-mcbus").
+        then(function (response) { if (response.ok) { return response.json(); } }).
+        then(function (data) {
+          console.log(data);
+          self.buses = data.busRoutes;
+        });
+    }*/
+    // Go to the URL data has our data and display it
+    loadBusRoutes: function () {
+      // Store "this" so we can access our Vue object inside the asynchronous then() functions.
+      // By the time the data is returned from the cloud, loadBusRoutes() has exited, and our context is no longer the Vue object
+      // but "self" sticks around since it was defined here. This is a "closure".
+      let self = this;
+
+      fetch(serverURL + "bus-routes")
+        .then(function (response) { if (response.ok) { return response.json(); } })
+        .then(function (data) {
+          console.log(data);
+          self.buses = data.busRoutes;
+        });
+
+      fetch(serverURL + "events?bus=1999")
+        .then(function (response) { if (response.ok) { return response.json(); } })
+        .then(function (events) {
+          console.log(events);
+          self.busEvents = events;
+        });
+    },
+    // Go to the URL data has our data and display it
+    saveComment: function () {
+      // Store "this" so we can access our Vue object inside the asynchronous then() function
+      let self = this;
+
+      let data = {
+        userName: "Anonymous",
+        comment: this.busComment,
+        bus: 1999
+      };
+
+      let jsonHeaders = {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      };
+
+      // post the data to the server to store
+      fetch(serverURL + "event", {
+        headers: jsonHeaders,
+        method: "POST",
+        body: JSON.stringify(data)
+      })
+        .then(function (response) {
+          console.log(response); self.debug = response.json();
+        })
+        .catch(function (response) { console.error(response); });
     }
-  }, 
-  // Go to the URL data has our data and display it
-  loadBusRoutes: function() {
-    // Store "this" so we can access our Vue object inside the asynchronous then() functions.
-    // By the time the data is returned from the cloud, loadBusRoutes() has exited, and our context is no longer the Vue object
-    // but "self" sticks around since it was defined here. This is a "closure".
-    let self = this;
-    
-    fetch( serverURL + "/bussy-mcbus").
-      then( function( response ) { if (response.ok) { return response.json(); }}).
-      then( function( data ) {
-        console.log( data );
-        self.buses = data.busRoutes;
-      });
   }
 });
 

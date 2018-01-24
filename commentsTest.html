@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -9,6 +10,17 @@
         <h1>Comments for {{ currentRoute }}</h1>
         <p>Hi this is a comment</p>
         <button v-on:click="addComment">My bus is here!</button>
+        <div>
+            <button v-on:click="saveComment">Show comments</button>
+        </div>
+        <div style="padding-top: 4em;">
+            <button v-on:click="loadBusRoutes">Show buses</button>
+            <li v-for="bus in buses">{{ bus }} </li>
+        </div>
+        <input v-model.trim="busComment" v-on:keyup.enter="saveComment" placeholder="what's happening on the bus?" size="40"></input>
+        <button v-on:click="saveComment">Submit</button>
+        <li v-for="event in busEvents">
+            "{{ event.comment }}" - ({{ event.userName}}, {{ event.day }} ) </li>
     </div>
 
     <script src="https://unpkg.com/vue"></script>
