@@ -1,8 +1,13 @@
- p {
-      border-bottom-style: solid;
-	  font-family: sans-serif;
-		
-    }
+
+body {
+	font-family: sans-serif;
+	border: none;
+}
+
+.button{
+	border-radius: 10%;
+	background-color: #FFD800;
+}
     .sidenav {
         height: 100%;
         width: 0;
