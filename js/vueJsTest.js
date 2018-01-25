@@ -25,7 +25,7 @@ var app = new Vue({
   el: "#app",
   data: {
     busComment: "",
-    busEvents:[],
+    busEvents: [],
     //Depends on ?route=number format
     currentRoute: document.location.search.substring(7),
     buses: stopData
@@ -77,7 +77,7 @@ var app = new Vue({
           self.buses = data.busRoutes;
         });
 
-      fetch(serverURL + "events?bus=1999")
+      fetch(serverURL + "events?bus=" + this.currentRoute)
         .then(function (response) { if (response.ok) { return response.json(); } })
         .then(function (events) {
           console.log(events);
@@ -92,7 +92,7 @@ var app = new Vue({
       let data = {
         userName: "Anonymous",
         comment: this.busComment,
-        bus: 1999
+        bus: parseInt(this.currentRoute)
       };
 
       let jsonHeaders = {
