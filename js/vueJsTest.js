@@ -1,5 +1,3 @@
-// old url --> let serverURL = "https://r3dnwi3z86.execute-api.us-east-1.amazonaws.com/dev";
-//let serverURL = "https://i526t8ar6k.execute-api.us-west-2.amazonaws.com/dev/";
 let serverURL = "https://cmao24c1ob.execute-api.us-west-2.amazonaws.com/dev/";
 
 Vue.component("navbar", {
