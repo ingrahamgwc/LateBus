@@ -22,6 +22,7 @@ function closeNav() {
 var app = new Vue({
   el: "#app",
   data: {
+    user: "Anonymous",
     busComment: "",
     busEvents: [],
     //Depends on ?route=number format
@@ -29,11 +30,6 @@ var app = new Vue({
     buses: stopData
   },
   methods: {
-    //listens to submitted comments
-    addComment: function (event) {
-      console.log("A comment was submitted!");
-      //call to serverless
-    },
     expand: function (event) {
       /*console.log("hi" + HTMLDivElement);
       this.style.display = "visible";
@@ -47,20 +43,6 @@ var app = new Vue({
       }*/
 
     },
-    // Go to the URL data has our data and display it
-    /*getComments: function () {
-      // Store "this" so we can access our Vue object inside the asynchronous then() functions.
-      // By the time the data is returned from the cloud, loadBusRoutes() has exited, and our context is no longer the Vue object
-      // but "self" sticks around since it was defined here. This is a "closure".
-      let self = this;
-
-      fetch(serverURL + "/bussy-mcbus").
-        then(function (response) { if (response.ok) { return response.json(); } }).
-        then(function (data) {
-          console.log(data);
-          self.buses = data.busRoutes;
-        });
-    }*/
     // Go to the URL data has our data and display it
     loadBusRoutes: function () {
       // Store "this" so we can access our Vue object inside the asynchronous then() functions.
@@ -88,7 +70,7 @@ var app = new Vue({
       let self = this;
 
       let data = {
-        userName: "Anonymous",
+        userName: this.user,
         comment: this.busComment,
         bus: parseInt(this.currentRoute)
       };
@@ -108,6 +90,12 @@ var app = new Vue({
           console.log(response); self.debug = response.json();
         })
         .catch(function (response) { console.error(response); });
+    }
+  },
+  //comments page loads immedietly
+  mounted() {
+    if (document.location.toString().includes("commentsTest.html")) {
+      this.loadBusRoutes();
     }
   }
 });
