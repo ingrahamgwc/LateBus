@@ -92,7 +92,7 @@ var app = new Vue({
         .catch(function (response) { console.error(response); });
     }
   },
-  //comments page loads immedietly
+  //comments page loads immediately
   mounted() {
     if (document.location.toString().includes("commentsTest.html")) {
       this.loadBusRoutes();

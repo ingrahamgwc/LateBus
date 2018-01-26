@@ -7,24 +7,20 @@
 
 <body>
     <div id="app">
+        <navbar></navbar>
         <h1>Comments for {{ currentRoute }}</h1>
-        <div>
-            <button v-on:click="saveComment">Show comments</button>
-        </div>
-        <div style="padding-top: 4em;">
-            <button v-on:click="loadBusRoutes">Show buses</button>
-            <li v-for="bus in buses">{{ bus }} </li>
-        </div>
-        <input v-model.trim="busComment" v-on:keyup.enter="saveComment" placeholder="what's happening on the bus?" size="40"></input>
-        <button v-on:click="saveComment">Submit</button>
         <li v-for="event in busEvents">
             "{{ event.comment }}" - ({{ event.userName}}, {{ event.day }} ) </li>
+        <input v-model.trim="busComment" v-on:keyup.enter="saveComment();loadBusRoutes();" placeholder="what's happening on the bus?"
+            size="40"></input>
+        <button v-on:click="saveComment();loadBusRoutes();">Submit</button>
     </div>
 
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/vue-router"></script>
     <script src="js\ingrahambusdata.js"></script>
     <script src="js\vueJsTest.js"></script>
+    <link rel="stylesheet" href="stylesheet.css">
 
 </body>
 
