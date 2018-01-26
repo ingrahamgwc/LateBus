@@ -30,6 +30,12 @@ var app = new Vue({
     buses: stopData
   },
   methods: {
+    signin: function () {
+      if (this.user == "") {
+        console.log("Invalid username: " + this.user);
+        this.user = "Anonymous";
+      }
+    },
     expand: function (event) {
       /*console.log("hi" + HTMLDivElement);
       this.style.display = "visible";

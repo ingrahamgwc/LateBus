@@ -9,6 +9,8 @@
     <div id="app">
         <navbar></navbar>
         <h1>Comments for {{ currentRoute }}</h1>
+        <input v-model.trim="user" v-on:keyup.enter="signin" placeholder="Enter username"></input>
+        <button v-on:click="signin">Set username</button>
         <li v-for="event in busEvents">
             "{{ event.comment }}" - ({{ event.userName}}, {{ event.day }} ) </li>
         <input v-model.trim="busComment" v-on:keyup.enter="saveComment();loadBusRoutes();" placeholder="what's happening on the bus?"
