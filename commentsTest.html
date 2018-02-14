@@ -11,11 +11,16 @@
         <h1>Comments for {{ currentRoute }}</h1>
         <input v-model.trim="user" v-on:keyup.enter="signin" placeholder="Enter username"></input>
         <button v-on:click="signin">Set username</button>
-        <li v-for="event in busEvents">
-            "{{ event.comment }}" - ({{ event.userName}}, {{ event.day }} ) </li>
+
         <input v-model.trim="busComment" v-on:keyup.enter="saveComment();loadBusRoutes();" placeholder="what's happening on the bus?"
             size="40"></input>
-        <button v-on:click="saveComment();loadBusRoutes();">Submit</button>
+        <button v-on:click="saveComment();loadBusRoutes();">Submit</button>      
+<!--  is it fine if I move the comment list here? 
+On the actual website the comments show up between
+ the username and submit button which is kind of 
+ confusing.-->		
+		<li v-for="event in busEvents">
+         "{{ event.comment }}" - ({{ event.userName}}, {{ event.day }} ) </li>
     </div>
 
     <script src="https://unpkg.com/vue"></script>
