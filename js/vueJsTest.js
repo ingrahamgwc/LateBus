@@ -111,11 +111,14 @@ var app = new Vue({
   },
   //comments page loads immediately
   mounted() {
+    let self = this;
     //depends on the url being commentsTest
     if (document.location.toString().includes("commentsTest.html")) {
       this.loadBusRoutes();
       // setinterval function
-      
+      setInterval(function () {
+        this.loadBusRoutes();
+      }.bind(this), 30000);
     }
   }
 });
