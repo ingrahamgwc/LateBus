@@ -67,6 +67,17 @@ var app = new Vue({
         .then(function (response) { if (response.ok) { return response.json(); } })
         .then(function (events) {
           console.log(events);
+          //sort data by time
+          function compare(a,b) {
+            if(a.time < b.time) {
+              return -1;
+            } else if (a.time > b.time) {
+              return 1;
+            } else {
+              return 0;
+            }
+          }
+          events.sort(compare);
           self.busEvents = events;
         });
     },
@@ -100,8 +111,11 @@ var app = new Vue({
   },
   //comments page loads immediately
   mounted() {
+    //depends on the url being commentsTest
     if (document.location.toString().includes("commentsTest.html")) {
       this.loadBusRoutes();
+      // setinterval function
+      
     }
   }
 });
