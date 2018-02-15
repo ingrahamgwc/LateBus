@@ -3,19 +3,76 @@
 
 <head>
     <title>Comments</title>
-</head>
+	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 14px; 
+			}
+		.comment-example {
+			max-width: 100%;
+			height: 100px; 
+			padding: 10px 10px 10px 10px;
+			border: solid;
+			border-color: #efca43;
+			border-width: 4px;
+			background-color: #ffea9d;
+			margin-left: 0px;
+			margin-bottom: 10px;
+		}
+		.username {
+			font-size: 20px;
+			float: left;
+		}
+		.time {
 
+			float: right;
+			font-size: 18px;
+			padding-right: 0px;
+			  
+		}
+		.location {
+			font-size: 20px;
+			float: right;
+			right: 20px;
+			padding-bottom: 50px;
+		  
+		}
+		.extra-comment {
+			padding-top: 2.5px;
+			font-size: 30px;
+			clear: both;
+	
+		}
+		ul {
+		  list-style:none; 
+		  padding-left:0;
+		  }
+		}
+	</style>
+</head>
+<!-- commentlayout.html has a sample comment layout -->
 <body>
     <div id="app">
         <navbar></navbar>
         <h1>Comments for {{ currentRoute }}</h1>
         <input v-model.trim="user" v-on:keyup.enter="signin" placeholder="Enter username"></input>
         <button v-on:click="signin">Set username</button>
-        <li v-for="event in busEvents">
-            "{{ event.comment }}" - ({{ event.userName}}, {{ event.day }} ) </li>
+
         <input v-model.trim="busComment" v-on:keyup.enter="saveComment();loadBusRoutes();" placeholder="what's happening on the bus?"
             size="40"></input>
-        <button v-on:click="saveComment();loadBusRoutes();">Submit</button>
+        <button v-on:click="saveComment();loadBusRoutes();">Submit</button>      
+<!--  is it fine if I move the comment list here? 
+On the actual website the comments show up between
+ the username and submit button which is kind of 
+ confusing.-->		
+ <ul>
+		<li v-for="event in busEvents">
+		<div class="comment-example"> 
+			<div class="username">{{ event.userName}}</div>
+			<div class="time"> {{ event.day }} </div>
+			<br/></br><div class="extra-comment"> "{{ event.comment }}"</div>
+			<br/><div class="location"> location </div>
+  <!--       "{{ event.comment }}" - ({{ event.userName}}, {{ event.day }} ) --> </li></ul>
     </div>
 
     <script src="https://unpkg.com/vue"></script>
