@@ -25,24 +25,20 @@
 			float: left;
 		}
 		.time {
-
 			float: right;
 			font-size: 18px;
-			padding-right: 0px;
-			  
 		}
 		.location {
 			font-size: 20px;
+		
+			padding-right: 10px; 
+			bottom: 10px;	
 			float: right;
-			right: 20px;
-			padding-bottom: 50px;
-		  
 		}
 		.extra-comment {
 			padding-top: 2.5px;
 			font-size: 30px;
 			clear: both;
-	
 		}
 		ul {
 		  list-style:none; 
@@ -71,8 +67,9 @@ On the actual website the comments show up between
 		<div class="comment-example"> 
 			<div class="username">{{ event.userName}}</div>
 			<div class="time"> {{ event.day }} </div>
-			<br/></br><div class="extra-comment"> "{{ event.comment }}"</div>
-			<br/><div class="location"> location </div>
+			<br><br>
+			<div class="extra-comment"> "{{ event.comment }}"</div>
+			<div class="location">location</div>
   <!--       "{{ event.comment }}" - ({{ event.userName}}, {{ event.day }} ) --> </li>
   </ul>
     </div>
