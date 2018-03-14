@@ -46,4 +46,10 @@ body {
       background-color: #e0e0e0;
     }
 
-		
+		h1 {
+			display: inline;
+		}
+
+		.navdiv {
+			display: inline;
+		}
