@@ -45,21 +45,17 @@
 		}
 	</style>
 </head>
-<!-- commentlayout.html has a sample comment layout -->
 <body>
     <div id="app">
         <navbar></navbar>
         <h1>Comments for {{ currentRoute }}</h1>
+		<br>
         <input v-model.trim="user" v-on:keyup.enter="signin" placeholder="Enter username"></input>
         <button v-on:click="signin">Set username</button>
 
         <input v-model.trim="busComment" v-on:keyup.enter="saveComment();loadBusRoutes();" placeholder="what's happening on the bus?"
             size="40"></input>
-        <button v-on:click="saveComment();loadBusRoutes();">Submit</button>      
-<!--  is it fine if I move the comment list here? 
-On the actual website the comments show up between
- the username and submit button which is kind of 
- confusing.-->		
+        <button v-on:click="saveComment();loadBusRoutes();">Submit</button>      	
  <ul>
 		<li v-for="event in busEvents">
 		<div class="comment-example"> 
@@ -68,7 +64,7 @@ On the actual website the comments show up between
 			<br><br>
 			<div class="extra-comment"> "{{ event.comment }}"</div>
 			<div class="location">location</div>
-  <!--       "{{ event.comment }}" - ({{ event.userName}}, {{ event.day }} ) --> </li>
+		</li>
   </ul>
     </div>
 

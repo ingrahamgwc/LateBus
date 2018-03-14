@@ -7,7 +7,14 @@
 	  font-family: sans-serif;
       margin: 0;
     }
-
+	
+	button.arrivalButton {
+	font-size: 18px;
+	background-color: #efca43;
+	border: 0px;
+	margin-bottom: 10px;
+	}
+	
     button.accordion {
       border: none;
       padding: 2%;
@@ -51,7 +58,8 @@
         <button v-on:click="expand(this)" class="accordion">{{ stop.address }} arriving at {{ stop.schedTime }}</button>
         <div class="panel">
           <p>Predicted: {{ stop.predTime }}</p>
-          <p>Scheduled: {{ stop.schedTime }}</p>
+		  <p>Scheduled: {{ stop.schedTime }}</p>
+		  <button v-on:click="arrivalReport" class="arrivalButton">My bus is here!</button>
         </div>
       </div>
     </div>
