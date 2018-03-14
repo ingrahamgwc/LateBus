@@ -1,7 +1,7 @@
 let serverURL = "https://cmao24c1ob.execute-api.us-west-2.amazonaws.com/dev/";
 
 Vue.component("navbar", {
-  template: "<div>\
+  template: "<div class=\"navdiv\">\
                 <div id=\"mySidenav\" class=\"sidenav\">\
                   <span style=\"cursor:pointer\" class=\"closebtn\" onclick=\"closeNav()\">&times;</span>\
                   <a href=\"./homepage.html\">Home</a><a href=\"./about.html\">About</a>\
@@ -136,4 +136,3 @@ for (var i = 0; i < acc.length; i++) {
     }
   }
 }
-
