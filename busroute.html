@@ -2,6 +2,7 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
+  <link rel="stylesheet" href="stylesheet.css">
   <style>
     body {
 	  font-family: sans-serif;
@@ -52,6 +53,7 @@
 
 <body>
   <div id="app">
+    <navbar></navbar>
     <h1 id="routeTitle"> {{ currentRoute }} </h1>
     <div v-for="bus in buses">
       <div v-for="stop in bus.stops" v-if="currentRoute == bus.name">
