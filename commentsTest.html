@@ -2,6 +2,7 @@
 <html>
 
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Comments</title>
 	<style>
 		body {
@@ -24,24 +25,18 @@
 			float: left;
 		}
 		.time {
-
 			float: right;
 			font-size: 18px;
-			padding-right: 0px;
-			  
 		}
 		.location {
 			font-size: 20px;
+			padding-right: 10px; 
 			float: right;
-			right: 20px;
-			padding-bottom: 50px;
-		  
+			position: relative; 
 		}
 		.extra-comment {
-			padding-top: 2.5px;
-			font-size: 30px;
+			font-size: 20px;
 			clear: both;
-	
 		}
 		ul {
 		  list-style:none; 
@@ -70,9 +65,11 @@ On the actual website the comments show up between
 		<div class="comment-example"> 
 			<div class="username">{{ event.userName}}</div>
 			<div class="time"> {{ event.day }} </div>
-			<br/></br><div class="extra-comment"> "{{ event.comment }}"</div>
-			<br/><div class="location"> location </div>
-  <!--       "{{ event.comment }}" - ({{ event.userName}}, {{ event.day }} ) --> </li></ul>
+			<br><br>
+			<div class="extra-comment"> "{{ event.comment }}"</div>
+			<div class="location">location</div>
+  <!--       "{{ event.comment }}" - ({{ event.userName}}, {{ event.day }} ) --> </li>
+  </ul>
     </div>
 
     <script src="https://unpkg.com/vue"></script>
