@@ -1,15 +1,15 @@
 let serverURL = "https://cmao24c1ob.execute-api.us-west-2.amazonaws.com/dev/";
 
-Vue.component("navbar", {
+var navbar = {
   template: "<div>\
                 <div id=\"mySidenav\" class=\"sidenav\">\
                   <span style=\"cursor:pointer\" class=\"closebtn\" onclick=\"closeNav()\">&times;</span>\
                   <a href=\"./homepage.html\">Home</a><a href=\"./about.html\">About</a>\
                   <a href=\"./help.html\">Help</a><a href=\"./contact.html\">Contact</a>\
                 </div>\
-              <span style=\"font-size:30px;cursor:pointer\" onclick=\"openNav()\">&#9776; Home</span>\
+              <span style=\"font-size:30px;cursor:pointer\" onclick=\"openNav()\">&#9776; </span>\
             </div>"
-});
+}
 
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
@@ -108,6 +108,9 @@ var app = new Vue({
         })
         .catch(function (response) { console.error(response); });
     }
+  },
+  components: {
+    'navbar': navbar
   },
   //comments page loads immediately
   mounted() {
