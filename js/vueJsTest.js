@@ -4,7 +4,7 @@ var navbar = {
   template: "<div class=\"navdiv\">\
                 <div id=\"mySidenav\" class=\"sidenav\">\
                   <span style=\"cursor:pointer\" class=\"closebtn\" onclick=\"closeNav()\">&times;</span>\
-                  <a href=\"./homepage.html\">Home</a><a href=\"./about.html\">About</a>\
+                  <a href=\"./index.html\">Home</a><a href=\"./about.html\">About</a>\
                   <a href=\"./help.html\">Help</a><a href=\"./contact.html\">Contact</a>\
                 </div>\
               <span style=\"font-size:30px;cursor:pointer\" onclick=\"openNav()\">&#9776;</span>\
