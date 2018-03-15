@@ -27,8 +27,20 @@ var app = new Vue({
     busEvents: [],
     //Depends on ?route=number format
     currentRoute: document.location.search.substring(7),
-    buses: stopData
+    buses: stopData,
+    position: 0,     // GPS coords
   },
+  
+  beforeCreate: function() {
+    // find out where we are from browser/phone
+    // watchPosition() calls our function whenever phone moves
+    var self = this;
+    navigator.geolocation.watchPosition( function( position ) {
+      console.log("Location = " + position.coords.latitude, position.coords.longitude );
+      self.position = position.coords;
+    });
+  },
+  
   methods: {
     signin: function () {
       if (this.user == "") {
