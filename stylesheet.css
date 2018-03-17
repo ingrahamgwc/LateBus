@@ -1,8 +1,4 @@
 
-body {
-	font-family: sans-serif;
-	border: none;
-}
 
 .button{
 	border-radius: 10%;
@@ -46,10 +42,20 @@ body {
       background-color: #e0e0e0;
     }
 
-		h1 {
-			display: inline;
-		}
+h1 {
+	display: inline;
+}
 
-		.navdiv {
-			display: inline;
-		}
+.navdiv {
+	display: inline;
+}
+
+body {
+	font-family: sans-serif;
+	border: none;
+	text-align: center;
+}
+
+.headerthing {
+	text-align: left;
+}
