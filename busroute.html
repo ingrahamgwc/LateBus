@@ -7,6 +7,7 @@
     body {
 	  font-family: sans-serif;
       margin: 0;
+	  text-align: left;
     }
 	
 	button.arrivalButton {
@@ -61,7 +62,7 @@
         <div class="panel">
           <p>Predicted: {{ stop.predTime }}</p>
 		  <p>Scheduled: {{ stop.schedTime }}</p>
-		  <button v-on:click="arrivalReport" class="arrivalButton">My bus is here!</button>
+		  <button v-on:click="arrivalReport" class="arrivalButton">My bus is here! <br>(Click this to make a comment saying the bus is here)</button>
         </div>
       </div>
     </div>
