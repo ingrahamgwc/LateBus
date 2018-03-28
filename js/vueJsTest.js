@@ -99,7 +99,7 @@ var app = new Vue({
           self.busEvents = events;
         });
     },
-    // Go to the URL data has our data and display it
+    // Storing a comment in the data base then we re-load the comments.
     saveComment: function () {
       // Store "this" so we can access our Vue object inside the asynchronous then() function
       let self = this;
@@ -123,6 +123,7 @@ var app = new Vue({
       })
         .then(function (response) {
           console.log(response); self.debug = response.json();
+          self.loadBusRoutes()
         })
         .catch(function (response) { console.error(response); });
     }
