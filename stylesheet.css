@@ -45,7 +45,9 @@
 h1 {
 	display: inline;
 }
-
+h2 {
+	text-align: center;
+}
 .navdiv {
 	display: inline;
 }
@@ -53,7 +55,7 @@ h1 {
 body {
 	font-family: sans-serif;
 	border: none;
-	text-align: center;
+
 }
 
 .headerthing {
