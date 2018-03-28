@@ -134,7 +134,7 @@ var app = new Vue({
   mounted: function() {
     let self = this;
     //depends on the url being commentsTest
-    if (document.location.toString().includes("commentsTest.html")) {
+    if (document.location.toString().includes("comments.html")) {
       this.loadBusRoutes();
       // setinterval function
       setInterval(function () {
