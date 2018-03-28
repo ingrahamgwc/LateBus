@@ -48,6 +48,10 @@ var app = new Vue({
         this.user = "Anonymous";
       }
     },
+    // this is called when the user pushes the "my bus is here" button is pushed. 
+    arrivalReport: function (event) {
+    },
+    
     expand: function (event) {
       /*console.log("hi" + HTMLDivElement);
       this.style.display = "visible";
