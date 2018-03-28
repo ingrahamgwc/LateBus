@@ -56,15 +56,14 @@
 
         <input v-model.trim="busComment" v-on:keyup.enter="saveComment();loadBusRoutes();" placeholder="what's happening on the bus?"
             size="40"></input>
-<<<<<<< HEAD
-        <button v-on:click="saveComment();loadBusRoutes();">Submit</button>      	
-=======
+   	
+
         <button v-on:click="saveComment();loadBusRoutes();">Submit</button>
 <!--  is it fine if I move the comment list here?
 On the actual website the comments show up between
  the username and submit button which is kind of
  confusing.-->
->>>>>>> f6785542396bcb4cac1010703f1e2de4cfa20497
+
  <ul>
 		<li v-for="event in busEvents">
 		<div class="comment-example">
