@@ -51,6 +51,7 @@ var app = new Vue({
     // this is called when the user pushes the "my bus is here" button is pushed. 
     arrivalReport: function (event) {
       console.log("hi world");
+      alert("GET ON THE BUS!");
     },
     
     expand: function (event) {
