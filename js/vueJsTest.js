@@ -125,7 +125,7 @@ var app = new Vue({
     'navbar': navbar
   },
   //comments page loads immediately
-  mounted() {
+  mounted: function() {
     let self = this;
     //depends on the url being commentsTest
     if (document.location.toString().includes("commentsTest.html")) {
