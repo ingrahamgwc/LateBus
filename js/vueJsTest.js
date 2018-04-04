@@ -51,7 +51,34 @@ var app = new Vue({
     // this is called when the user pushes the "my bus is here" button is pushed. 
     arrivalReport: function (event) {
       console.log("hi world");
-      alert("GET ON THE BUS!");
+     // alert("GET ON THE BUS!");
+
+       // Store "this" so we can access our Vue object inside the asynchronous then() function
+       let self = this;
+
+       let data = {
+         userName: this.user,
+         comment: "Hey a bus arrived",
+         bus: parseInt(this.currentRoute)
+       };
+ 
+       let jsonHeaders = {
+         "Accept": "application/json",
+         "Content-Type": "application/json"
+       };
+ 
+       // post the data to the server to store
+       fetch(serverURL + "event", {
+         headers: jsonHeaders,
+         method: "POST",
+         body: JSON.stringify(data)
+       })
+         .then(function (response) {
+           console.log(response); self.debug = response.json();
+           self.loadBusRoutes()
+         })
+         .catch(function (response) { console.error(response); });
+         window.location.href = "https://ingrahamgwc.github.io/latebus/comments.html?route=" + this.currentRoute;
     },
     
     expand: function (event) {
