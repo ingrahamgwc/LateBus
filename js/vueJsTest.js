@@ -114,7 +114,7 @@ var app = new Vue({
           console.log(events);
           //sort data by time
           function compare(a,b) {
-            if(a.time < b.time) {
+            if (a.time < b.time) {
               return -1;
             } else if (a.time > b.time) {
               return 1;
