@@ -11,6 +11,12 @@ var navbar = {
             </div>"
 }
 
+Vue.filter('formatDate', function(value) {
+  if (value) {
+    return "hiya";
+  }
+}
+
 function openNav() {
   document.getElementById("mySidenav").style.width = "210px";
 }

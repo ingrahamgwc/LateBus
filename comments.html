@@ -75,7 +75,7 @@ On the actual website the comments show up between
 			<li v-for="event in busEvents">
 				<div class="comment-example">
 					<div class="username">{{ event.userName}}</div>
-					<div class="time"> {{ event.day }} </div>
+					<div class="time"> {{ event.time | formatDate }} </div>
 					<br>
 					<br>
 					<div class="extra-comment"> "{{ event.comment }}"</div>
