@@ -30,17 +30,17 @@ var app = new Vue({
     buses: stopData,
     position: 0,     // GPS coords
   },
-  
-  beforeCreate: function() {
+
+  beforeCreate: function () {
     // find out where we are from browser/phone
     // watchPosition() calls our function whenever phone moves
     var self = this;
-    navigator.geolocation.watchPosition( function( position ) {
-      console.log("Location = " + position.coords.latitude, position.coords.longitude );
+    navigator.geolocation.watchPosition(function (position) {
+      console.log("Location = " + position.coords.latitude, position.coords.longitude);
       self.position = position.coords;
     });
   },
-  
+
   methods: {
     signin: function () {
       if (this.user == "") {
@@ -51,36 +51,38 @@ var app = new Vue({
     // this is called when the user pushes the "my bus is here" button is pushed. 
     arrivalReport: function (event) {
       console.log("hi world");
-     // alert("GET ON THE BUS!");
+      // alert("GET ON THE BUS!");
 
-       // Store "this" so we can access our Vue object inside the asynchronous then() function
-       let self = this;
+      // Store "this" so we can access our Vue object inside the asynchronous then() function
+      let self = this;
 
-       let data = {
-         userName: this.user,
-         comment: "Hey a bus arrived",
-         bus: parseInt(this.currentRoute)
-       };
- 
-       let jsonHeaders = {
-         "Accept": "application/json",
-         "Content-Type": "application/json"
-       };
- 
-       // post the data to the server to store
-       fetch(serverURL + "event", {
-         headers: jsonHeaders,
-         method: "POST",
-         body: JSON.stringify(data)
-       })
-         .then(function (response) {
-           console.log(response); self.debug = response.json();
-           self.loadBusRoutes()
-         })
-         .catch(function (response) { console.error(response); });
-         window.location.href = "https://ingrahamgwc.github.io/latebus/comments.html?route=" + this.currentRoute;
+      let data = {
+        userName: this.user,
+        comment: "Hey a bus arrived",
+        bus: parseInt(this.currentRoute),
+        location: this.position,
+        arrival: true
+      };
+
+      let jsonHeaders = {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      };
+
+      // post the data to the server to store
+      fetch(serverURL + "event", {
+        headers: jsonHeaders,
+        method: "POST",
+        body: JSON.stringify(data)
+      })
+        .then(function (response) {
+          console.log(response); self.debug = response.json();
+          self.loadBusRoutes()
+        })
+        .catch(function (response) { console.error(response); });
+      window.location.href = "https://ingrahamgwc.github.io/latebus/comments.html?route=" + this.currentRoute;
     },
-    
+
     expand: function (event) {
       /*console.log("hi" + HTMLDivElement);
       this.style.display = "visible";
@@ -113,8 +115,8 @@ var app = new Vue({
         .then(function (events) {
           console.log(events);
           //sort data by time
-          function compare(a,b) {
-            if(a.time < b.time) {
+          function compare(a, b) {
+            if (a.time < b.time) {
               return -1;
             } else if (a.time > b.time) {
               return 1;
@@ -134,7 +136,9 @@ var app = new Vue({
       let data = {
         userName: this.user,
         comment: this.busComment,
-        bus: parseInt(this.currentRoute)
+        bus: parseInt(this.currentRoute),
+        location: this.position,
+        arrival: false
       };
 
       let jsonHeaders = {
@@ -159,7 +163,7 @@ var app = new Vue({
     'navbar': navbar
   },
   //comments page loads immediately
-  mounted: function() {
+  mounted: function () {
     let self = this;
     //depends on the url being commentsTest
     if (document.location.toString().includes("comments.html")) {
