@@ -77,10 +77,13 @@ var app = new Vue({
       })
         .then(function (response) {
           console.log(response); self.debug = response.json();
-          self.loadBusRoutes()
+          self.loadBusRoutes();
+          window.location.href = "https://ingrahamgwc.github.io/latebus/comments.html?route=" + this.currentRoute;
         })
-        .catch(function (response) { console.error(response); });
-      window.location.href = "https://ingrahamgwc.github.io/latebus/comments.html?route=" + this.currentRoute;
+        .catch(function (response) { 
+          console.error(response);
+          alert("something's broken :("); 
+        });
     },
 
     expand: function (event) {
