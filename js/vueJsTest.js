@@ -78,7 +78,7 @@ var app = new Vue({
         .then(function (response) {
           console.log(response); self.debug = response.json();
           self.loadBusRoutes();
-          window.location.href = "https://ingrahamgwc.github.io/latebus/comments.html?route=" + this.currentRoute;
+          window.location.href = "https://ingrahamgwc.github.io/latebus/comments.html?route=" + self.currentRoute;
         })
         .catch(function (response) { 
           console.error(response);
