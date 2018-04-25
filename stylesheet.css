@@ -61,9 +61,3 @@ body {
 .headerthing {
 	text-align: left;
 }
-
-div#map {
-	height: 400px;
-	width: 500px;
-	background-color: #FFD800;
-}	
