@@ -13,7 +13,7 @@ var navbar = {
 
 Vue.filter('formatDate', function(value) {
   if (value) {
-    return moment(String(value)).format('hh:mm')
+    return moment(String(value)).format('hh:mm');
   }
 });
 
