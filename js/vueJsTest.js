@@ -33,6 +33,7 @@ var app = new Vue({
     busEvents: [],
     //Depends on ?route=number format
     currentRoute: document.location.search.substring(7),
+    timeLeft: 0,
     buses: stopData,
     position: 0,     // GPS coords
   },
@@ -43,7 +44,7 @@ var app = new Vue({
     var self = this;
     navigator.geolocation.watchPosition(function (position) {
       console.log("Location = " + position.coords.latitude, position.coords.longitude);
-      self.position = position.coords;
+      self.position = [ position.coords.latitude, position.coords.longitude];
     });
   },
 
@@ -136,6 +137,33 @@ var app = new Vue({
           events.sort(compare);
           self.busEvents = events;
         });
+    },
+    // Go to the URL data has our data and display it
+    loadTimeRemaining: function() {
+      console.log("hi");
+
+      if (!this.position) {
+        this.timeLeft = "can't figure out your location";
+        return;
+      }
+      let busStop = new google.maps.LatLng( this.position.latitude,
+                                            this.position.longitude );
+
+      var googleMaps = new google.maps.DistanceMatrixService();
+      googleMaps.getDistanceMatrix(
+        {
+          origins: [busStop],
+          destinations: [this.destination],
+          travelMode: 'DRIVING',
+          unitSystem: google.maps.UnitSystem.IMPERIAL,
+          avoidHighways: true,
+        }, callback);
+
+        
+      function callback( data, status) {
+          console.log( data );
+        self.timeLeft = data.rows[0].elements[0].duration.text;
+      }
     },
     // Storing a comment in the data base then we re-load the comments.
     saveComment: function () {
