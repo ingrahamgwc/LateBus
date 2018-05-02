@@ -41,36 +41,39 @@
     <div id="map">Hello!!!!</div>
     <script>
       function initMap() {
-	var ingraham = {lat: 47.726064, lng:-122.337908};
+	var ingraham = {lat: 47.726064, lng: -122.337908};
 	var busMap = new google.maps.Map(document.getElementById('map'), {
 	  zoom: 11,
 	  center: ingraham
 	});
 	console.log("instantiated busMap");
-	for (var i = 0; i < stopData.length; i++) {
+	var infowindow = new google.maps.InfoWindow();
+	for (var i = 0; i < stopData.length; i++) {		
 		var route = stopData[i];
 		for (var j = 0; j < route.stops.length; j++) {
 			var stop = route.stops[j];
-			var contentString = '<div id="content">'+
-				'<div id="siteNotice">'+
-				'</div>'+
-				'<h2 id="firstHeading" class="firstHeading">' + route.name + ': ' + stop.address +'</h2>'+
-				'<div id="bodyContent">'+
-				'<p>Scheduled time of arrival: ' + stop.schedTime + ' AM </p>' +
-				'<p> Predicted time of arrival: XX:XX AM </p>';
-			var infoWindow = new google.maps.InfoWindow({
-				content: contentString
-			});
-			
 			var marker = new google.maps.Marker({
 			  position: {lat: stop.lat, lng: stop.long},
 			  map: busMap,
-			  title: 'Stop' + stop.address
+			  title: 'Stop ' + stop.address
 			});
+			var routeName = route.name;
+			var addressName = stop.address;
+			var scheduled = stop.schedTime;
+			var content = '<div id="content">'+
+			'<div id="siteNotice">'+
+			'</div>'+
+			'<h2 id="firstHeading" class="firstHeading">' + routeName + ': ' + addressName +'</h2>'+
+			'<div id="bodyContent">'+
+			'<p>Scheduled time of arrival: ' + scheduled + ' AM </p>' +
+			'<p> Predicted time of arrival: XX:XX AM </p>';	
 			
-			marker.addListener('click', function() {
-			  infoWindow.open(busMap, marker);
-			});
+			google.maps.event.addListener(marker, 'click', (function(marker,content,infowindow){
+				return function() {
+					infowindow.setContent(content);
+					infowindow.open(busMap, marker);
+				};
+			})(marker,content,infowindow));
 		}
 	  }
 	}
