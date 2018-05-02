@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="stylesheet.css">
   <style>
     body {
@@ -14,8 +15,10 @@
     button.arrivalButton {
       font-size: 18px;
       background-color: #efca43;
-      border: 0px;
       margin-bottom: 10px;
+      margin-left: 10px;
+      color: #000000;
+      padding: 2em;
     }
 
     button.accordion {
@@ -63,14 +66,14 @@
         <div class="panel">
           <p>Predicted: {{ stop.predTime }}</p>
           <p>Scheduled: {{ stop.schedTime }}</p>
-          <button v-on:click="arrivalReport" class="arrivalButton">My bus is here!
-            <br>(Click this to make a comment saying the bus is here)</button>
+          <button v-on:click="arrivalReport" class="arrivalButton btn btn-outline-warning">
+           Click when your bus arrives!</button>
         </div>
       </div>
     </div>
     <div id="statusBtnDiv">
-      <a id="statusBtn" :href="'comments.html?route='+currentRoute">
-        Report Bus Status
+      <a id="statusBtn" class="btn btn-outline-warning" :href="'comments.html?route='+currentRoute">
+        Bus Chat
       </a>
     </div>
   </div>
