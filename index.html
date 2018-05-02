@@ -47,27 +47,34 @@
 	  center: ingraham
 	});
 	console.log("instantiated busMap");
-	var contentString = '<div id="content">'+
-	    '<div id="siteNotice">'+
-	    '</div>'+
-	    '<h1 id="firstHeading" class="firstHeading">Bus Stop XXX on Route XXXX</h1>'+
-	    '<div id="bodyContent">'+
-	    '<p>Predicted time to arrive in morning: XX:XXam.</p>';
-	var infoWindow = new google.maps.InfoWindow({
-	    content: contentString
-	});
-
-	var marker = new google.maps.Marker({
-	  position:ingraham,
-	  map: busMap,
-	  title: 'Stop XXXX'
-	});
-
-	marker.addListener('click', function() {
-	  infoWindow.open(busMap, marker);
-	});
-      }
-
+	for (var i = 0; i < stopData.length; i++) {
+		var route = stopData[i];
+		for (var j = 0; j < route.stops.length; j++) {
+			var stop = route.stops[j];
+			var contentString = '<div id="content">'+
+				'<div id="siteNotice">'+
+				'</div>'+
+				'<h2 id="firstHeading" class="firstHeading">' + route.name + ': ' + stop.address +'</h2>'+
+				'<div id="bodyContent">'+
+				'<p>Scheduled time of arrival: ' + stop.schedTime + ' AM </p>' +
+				'<p> Predicted time of arrival: XX:XX AM </p>';
+			var infoWindow = new google.maps.InfoWindow({
+				content: contentString
+			});
+			
+			var marker = new google.maps.Marker({
+			  position: {lat: stop.lat, lng: stop.long},
+			  map: busMap,
+			  title: 'Stop' + stop.address
+			});
+			
+			marker.addListener('click', function() {
+			  infoWindow.open(busMap, marker);
+			});
+		}
+	  }
+	}
+<!-- -->
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSzD9haJ-HWTjwRef7MuNL_lUtXJiYfic&callback=initMap">
