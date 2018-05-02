@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="stylesheet.css">
   <style>
     body {
@@ -14,8 +15,8 @@
     button.arrivalButton {
       font-size: 18px;
       background-color: #efca43;
-      border: 0px;
       margin-bottom: 10px;
+      margin-left: 10px;
     }
 
     button.accordion {
@@ -63,7 +64,7 @@
         <div class="panel">
           <p>Predicted: {{ stop.predTime }}</p>
           <p>Scheduled: {{ stop.schedTime }}</p>
-          <button v-on:click="arrivalReport" class="arrivalButton">My bus is here!
+          <button v-on:click="arrivalReport" class="arrivalButton btn btn-outline-warning">My bus is here!
             <br>(Click this to make a comment saying the bus is here)</button>
         </div>
       </div>
