@@ -1,86 +1,98 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel = "stylesheet" href="stylesheet.css">
-  <title>LateBus Home</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="stylesheet.css">
+	<title>LateBus Home</title>
 </head>
 
 <body>
-  <div id="app">
-    <div class="headerthing">
-      <navbar></navbar>
-      <h1>LateBus</h1>
-    </div>
-    <a href="busroute.html?route=1002">
-      <h2>1002</h2>
-    </a>
-    <a href="busroute.html?route=1003">
-      <h2>1003</h2>
-    </a>
-    <a href="busroute.html?route=1004">
-      <h2>1004</h2>
-    </a>
-    <a href="busroute.html?route=1006">
-      <h2>1006</h2>
-    </a>
-    <div>
+	<div id="app">
+		<div class="headerthing">
+			<navbar></navbar>
+			<h1>LateBus</h1>
+		</div>
+		<div class="flex-container">
+			<div>
+				<a href="busroute.html?route=1002">
+					<h2>1002</h2>
+				</a>
+			</div>
+			<div>
+				<a href="busroute.html?route=1003">
+					<h2>1003</h2>
+				</a>
+			</div>
+			<div>
+				<a href="busroute.html?route=1004">
+					<h2>1004</h2>
+				</a>
+			</div>
+			<div>
+				<a href="busroute.html?route=1006">
+					<h2>1006</h2>
+				</a>
+			</div>
+		</div>
+		<div>
+			<!--
 	<p>Welcome to the LateBus app! Is your bus late? Click on your bus route to talk to other people on your bus and see where it might be. Is your bus at your stop? Great! Please click on your route, find your stop, and click "My bus is here!"</p>
 	<p>Please keep your language polite while commenting. As much as waiting for the bus in the rain totally sucks, this is a public app and everything you submit can be seen by anyone else who looks. Thank you!</p>
-    </div>    
-  </div>
-  <script src="https://unpkg.com/vue"></script>
-  <script src="https://unpkg.com/vue-router"></script>
-  <script src="js\ingrahambusdata.js"></script>
-  <script src="js\vueJsTest.js"></script>
+-->
+		</div>
+	</div>
+	<script src="https://unpkg.com/vue"></script>
+	<script src="https://unpkg.com/vue-router"></script>
+	<script src="js\ingrahambusdata.js"></script>
+	<script src="js\vueJsTest.js"></script>
 
-<!--attempting to make a google map appear on page -->
-<h3>Google Maps Demo</h3>
-    <div id="map">Hello!!!!</div>
-    <script>
-      function initMap() {
-	var ingraham = {lat: 47.726064, lng: -122.337908};
-	var busMap = new google.maps.Map(document.getElementById('map'), {
-	  zoom: 11,
-	  center: ingraham
-	});
-	console.log("instantiated busMap");
-	var infowindow = new google.maps.InfoWindow();
-	for (var i = 0; i < stopData.length; i++) {		
-		var route = stopData[i];
-		for (var j = 0; j < route.stops.length; j++) {
-			var stop = route.stops[j];
-			var marker = new google.maps.Marker({
-			  position: {lat: stop.lat, lng: stop.long},
-			  map: busMap,
-			  title: 'Stop ' + stop.address
+	<!--attempting to make a google map appear on page -->
+	<!--<h3>Google Maps Demo</h3>-->
+	<div id="map">Hello!!!!</div>
+	<script>
+		function initMap() {
+			var ingraham = { lat: 47.726064, lng: -122.337908 };
+			var busMap = new google.maps.Map(document.getElementById('map'), {
+				zoom: 11,
+				center: ingraham
 			});
-			var routeName = route.name;
-			var addressName = stop.address;
-			var scheduled = stop.schedTime;
-			var content = '<div id="content">'+
-			'<div id="siteNotice">'+
-			'</div>'+
-			'<h2 id="firstHeading" class="firstHeading">' + routeName + ': ' + addressName +'</h2>'+
-			'<div id="bodyContent">'+
-			'<p>Scheduled time of arrival: ' + scheduled + ' AM </p>' +
-			'<p> Predicted time of arrival: XX:XX AM </p>';	
-			
-			google.maps.event.addListener(marker, 'click', (function(marker,content,infowindow){
-				return function() {
-					infowindow.setContent(content);
-					infowindow.open(busMap, marker);
-				};
-			})(marker,content,infowindow));
+			console.log("instantiated busMap");
+			var infowindow = new google.maps.InfoWindow();
+			for (var i = 0; i < stopData.length; i++) {
+				var route = stopData[i];
+				for (var j = 0; j < route.stops.length; j++) {
+					var stop = route.stops[j];
+					var marker = new google.maps.Marker({
+						position: { lat: stop.lat, lng: stop.long },
+						map: busMap,
+						title: 'Stop ' + stop.address
+					});
+					var routeName = route.name;
+					var addressName = stop.address;
+					var scheduled = stop.schedTime;
+					var content = '<div id="content">' +
+						'<div id="siteNotice">' +
+						'</div>' +
+						'<h2 id="firstHeading" class="firstHeading">' + routeName + ': ' + addressName + '</h2>' +
+						'<div id="bodyContent">' +
+						'<p>Scheduled time of arrival: ' + scheduled + ' AM </p>' +
+						'<p> Predicted time of arrival: XX:XX AM </p>';
+
+					google.maps.event.addListener(marker, 'click', (function (marker, content, infowindow) {
+						return function () {
+							infowindow.setContent(content);
+							infowindow.open(busMap, marker);
+						};
+					})(marker, content, infowindow));
+				}
+			}
 		}
-	  }
-	}
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSzD9haJ-HWTjwRef7MuNL_lUtXJiYfic&callback=initMap">
-    </script>
+	</script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSzD9haJ-HWTjwRef7MuNL_lUtXJiYfic&callback=initMap">
+	</script>
 
 </body>
 
