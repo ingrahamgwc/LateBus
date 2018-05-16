@@ -92,3 +92,7 @@ body {
     float: right;
     margin-right: 5%;
 }
+
+#buswithoutborder {
+	border-right: 0px;
+}
