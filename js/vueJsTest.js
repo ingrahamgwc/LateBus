@@ -33,6 +33,7 @@ var app = new Vue({
     busEvents: [],
     //Depends on ?route=number format
     currentRoute: document.location.search.substring(7),
+	isWelcomePage: document.location.search.substring(1) == "welcome",
     timeLeft: 0,
     buses: stopData,
     position: 0,     // GPS coords
