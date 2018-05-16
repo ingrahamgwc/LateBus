@@ -99,5 +99,3 @@ var Filter = (function() {
 
   return Filter;
 })();
-
-module.exports = Filter;
