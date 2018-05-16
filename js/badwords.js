@@ -1,7 +1,8 @@
 /** taken from https://github.com/web-mech/badwords/blob/master/lib/badwords.js
 */
 
-var localList = require('./lang.json').words;
+//var localList = require('./lang.json').words;
+
 var baseList = require('badwords-list').array;
 var Filter = (function() {
   /**
