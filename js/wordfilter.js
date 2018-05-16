@@ -3,7 +3,7 @@
 
 //var localList = require('./lang.json').words;
 //var baseList = require('badwords-list').array;
-var baselist;
+var baselist = [];
 var Filter = (function() {
   /**
    * Filter constructor.
@@ -99,5 +99,3 @@ var Filter = (function() {
 
   return Filter;
 })();
-
-module.exports = Filter;
