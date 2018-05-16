@@ -170,10 +170,11 @@ var app = new Vue({
     saveComment: function () {
       // Store "this" so we can access our Vue object inside the asynchronous then() function
       let self = this;
-
+	var filter = new Filter();
+	var cleanComment = filter.clean(this.busComment); //Don't be an ******
       let data = {
         userName: this.user,
-        comment: this.busComment,
+        comment: cleanComment,
         bus: parseInt(this.currentRoute),
         location: this.position,
         arrival: false
