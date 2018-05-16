@@ -3,7 +3,7 @@
 
 //var localList = require('./lang.json').words;
 //var baseList = require('badwords-list').array;
-var baselist = [];
+var baseList = [];
 var Filter = (function() {
   /**
    * Filter constructor.
