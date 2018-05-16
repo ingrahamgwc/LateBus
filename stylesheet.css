@@ -64,8 +64,11 @@ body {
 
 #map {
 	height: 400px;
-	width: 100%;
-	margin-top: 15px;
+	width: 98%;
+	margin-top: 1%;
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-bottom: 1%;
 }
 
 .flex-container {
