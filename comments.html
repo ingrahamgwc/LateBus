@@ -50,6 +50,28 @@
 			padding-left: 0;
 
 		}
+		
+		button {
+			background-color: #ffea9d;
+			border: 2px solid #efca43;
+			margin: auto;
+			width: auto;
+		}
+		
+		#commentsButton {
+			height: 45px;
+			margin-left: 20%;
+			margin-right: 20%;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			width: 60%;
+		}
+		
+		input {
+			margin-right: 5%;
+			margin-left: 5%;
+			width: 90%;
+		}
 	</style>
 </head>
 
@@ -58,15 +80,14 @@
 		<navbar></navbar>
 		<h1>Comments for {{ currentRoute }}</h1>
 		<br>
-		<button v-on:click="arrivalReport" class="arrivalButton btn btn-outline-warning">
+		<button v-on:click="arrivalReport" class="arrivalButton btn btn-outline-warning" id="commentsButton" >
 			Click when your bus arrives!</button>
 		<br>
 		<input v-model.trim="user" v-on:keyup.enter="signin" placeholder="Enter username"></input>
 		<button v-on:click="signin">Set username</button>
 
 		<input v-model.trim="busComment" v-on:keyup.enter="saveComment();loadBusRoutes();" placeholder="what's happening on the bus?"
-		 size="40"></input>
-
+		 ></input>
 
 		<button v-on:click="saveComment();loadBusRoutes();">Submit</button>
 		<!--  is it fine if I move the comment list here?
