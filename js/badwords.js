@@ -3,6 +3,8 @@
 var localList = [
     "ahole",
     "anus",
+    "wtf",
+    "WTF",
     "ash0le",
     "ash0les",
     "asholes",
