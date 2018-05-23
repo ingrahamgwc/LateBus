@@ -81,7 +81,25 @@ body {
 	left: 0;
 	margin-left: 10%;
 	margin-right: 10%;
-	background-color: red;
+	border-style: solid;
+	border-color: #efca43;
+	background-color: #ffea9d;
+	border-width: 5px 5px 5px 5px;
+	}
+#popup button {
+	position: relative;
+	background-color: #efca43;
+	transition-duration: 0.4s;
+	border-style: none;
+	height: 16%;
+	width: 20%;
+	margin-left: 40%;
+	margin-right: 40%;
+	margin-bottom: 5%
+}
+#popup button:hover {
+    background-color: #ffea9d;
+
 }
 .flex-container {
     display: flex;
