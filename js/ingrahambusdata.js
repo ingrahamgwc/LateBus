@@ -96,28 +96,28 @@ var stopData=[
           address: "NW 85th St @ 17th AVE NW",
           schedTime: "8:24",
           predTime: "predicted time",
-          lat: 47.6905997,
+          lat: 47.6906997,
           long: -122.378961
         },
         { 
           address: "NW 85th St@ 24th AVE NW",
           schedTime: "8:25",
           predTime: "predicted time",
-          lat: 47.69057429999999,
+          lat: 47.69067429999999,
           long: -122.38762270000001
         },
         {
           address: "24th AVE NW @ NW 96th St",
           schedTime: "8:27",
           predTime: "predicted time",
-          lat: 47.6989729,
+          lat: 47.6988729,
           long: -122.38757609999999
         },
         {
           address: "15th AVE NW @ NW 100th St",
           schedTime: "8:30",
           predTime: "predicted time",
-          lat: 47.70154160000001,
+          lat: 47.70164160000001,
           long: -122.37678089999997
         },
         {
