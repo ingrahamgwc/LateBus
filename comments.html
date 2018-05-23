@@ -58,6 +58,9 @@
 		<navbar></navbar>
 		<h1>Comments for {{ currentRoute }}</h1>
 		<br>
+		<button v-on:click="arrivalReport" class="arrivalButton btn btn-outline-warning">
+			Click when your bus arrives!</button>
+		<br>
 		<input v-model.trim="user" v-on:keyup.enter="signin" placeholder="Enter username"></input>
 		<button v-on:click="signin">Set username</button>
 
@@ -79,7 +82,7 @@ On the actual website the comments show up between
 					<br>
 					<br>
 					<div class="extra-comment"> "{{ event.comment }}"</div>
-					<div class="location">{{ event.location }}</div>
+					<div class="location">{{ event.address }}</div>
 			</li>
 		</ul>
 		</div>
