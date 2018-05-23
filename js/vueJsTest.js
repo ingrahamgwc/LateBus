@@ -93,7 +93,11 @@ var app = new Vue({
           alert("something's broken :("); 
         });
     },
-
+	closepopup: function (event) {
+		this.isWelcomePage = false;
+		window.location.href = "https://ingrahamgwc.github.io/latebus/index.html";
+		
+	},
     expand: function (event) {
       /*console.log("hi" + HTMLDivElement);
       this.style.display = "visible";
@@ -106,6 +110,29 @@ var app = new Vue({
         panel.style.display = "block";
       }*/
 
+    },
+    //used by loadBusRoutes to find the stop address closest to a single comment's location
+    getClosestAddress: function(commentCoordinates) {
+      var shortestDistance = Number.MAX_SAFE_INTEGER;
+      var closestAddress = "no address found";
+      for(var i = 0; i < stopData.length; i++) {
+        //only check correct route
+        if(stopData[i].name = this.currentRoute) {
+          console.log(stopData[i]);
+          //loop through stop addresses
+          for(var j = 0; j < stopData[i].stops.length; j++) {
+            var tempDistance = Math.sqrt(Math.pow(commentCoordinates[0] - stopData[i].stops[j].lat, 2)
+                   + Math.pow(commentCoordinates[1] - stopData[i].stops[j].long, 2));
+            console.log(tempDistance + " " + shortestDistance);
+            if(tempDistance < shortestDistance) { 
+              shortestDistance = tempDistance;
+              closestAddress = stopData[i].stops[j].address;
+            }
+          }
+        }
+      }
+      console.log("Closest address: " + closestAddress)
+      return closestAddress;
     },
     // Go to the URL data has our data and display it
     loadBusRoutes: function () {
@@ -141,10 +168,7 @@ var app = new Vue({
           //add address to busEvents object
           for(var i = 0; i < events.length; i++) {
             events[i].address = "no address found";
-            
-            //loop through all addresses to find the closest bus stop
-            console.log("buses:");
-            console.log(self.buses);
+            events[i].address = self.getClosestAddress(events[i].location);
 
           }
           self.busEvents = events;
@@ -184,9 +208,10 @@ var app = new Vue({
       let self = this;
 	var filter = new Filter();
 	var cleanComment = filter.clean(this.busComment); //Don't be an ******
+	var cleanUserName = filter.clean(this.user);    
       let data = {
-        userName: this.user,
         comment: cleanComment,
+	userName: cleanUserName,
         bus: parseInt(this.currentRoute),
         location: this.position,
         arrival: false
