@@ -184,9 +184,10 @@ var app = new Vue({
       let self = this;
 	var filter = new Filter();
 	var cleanComment = filter.clean(this.busComment); //Don't be an ******
+	var cleanUserName = filter.clean(this.user);    
       let data = {
-        userName: this.user,
         comment: cleanComment,
+	userName: cleanUserName,
         bus: parseInt(this.currentRoute),
         location: this.position,
         arrival: false
