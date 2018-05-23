@@ -135,7 +135,19 @@ var app = new Vue({
             }
           }
           events.sort(compare);
+          //self.busEvents = events;
+
+          //add address to busEvents object
+          for(var i = 0; i < events.length; i++) {
+            events[i].address = "no address found";
+            
+            //loop through all addresses to find the closest bus stop
+            console.log("buses:");
+            console.log(self.buses);
+
+          }
           self.busEvents = events;
+
         });
     },
     // Go to the URL data has our data and display it
