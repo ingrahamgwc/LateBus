@@ -11,12 +11,22 @@
 
 <body>
 	<div id="app">
+		<div id = "popup" v-show="isWelcomePage"> 
+			<p> &emsp; Welcome to LateBus!                                                                        
+				<ul>
+					<li>Select your route to view your stop.</li>
+					<li>Tap on the top bars to access the Help, Contact, and About pages. </li>
+					<li>Each bus has its own comments, please keep your comments polite!</li>
+				</ul>
+			</p>
+			<button v-on:click="closepopup"> COOL </button>
+		</div>
 		<div class="headerthing">
 			<navbar></navbar>
 			<h1>LateBus</h1>
 		</div>
 		<div class="flex-container">
-			<div id="two" >
+			<div>
 				<a href="busroute.html?route=1002">
 					<h2>1002</h2>
 				</a>
@@ -24,7 +34,7 @@
 					<a href="comments.html?route=1002"><img id="commentsIcon" src="img/commentsIcon.png"></a>
 				</div>
 			</div>
-			<div id="three">
+			<div>
 				<a href="busroute.html?route=1003">
 					<h2>1003</h2>
 				</a>
@@ -40,7 +50,7 @@
 					<a href="comments.html?route=1004"><img id="commentsIcon" src="img/commentsIcon.png"></a>
 				</div>
 			</div>
-			<div id="six" >
+			<div>
 				<a href="busroute.html?route=1006">
 					<h2>1006</h2>
 				</a>
@@ -56,6 +66,7 @@
 -->
 		</div>
 	</div>
+	
 	<script src="https://unpkg.com/vue"></script>
 	<script src="https://unpkg.com/vue-router"></script>
 	<script src="js\ingrahambusdata.js"></script>

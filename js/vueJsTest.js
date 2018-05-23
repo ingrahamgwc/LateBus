@@ -93,7 +93,10 @@ var app = new Vue({
           alert("something's broken :("); 
         });
     },
-
+	closepopup: function (event) {
+		this.isWelcomePage = false;
+		window.location.href = "https://ingrahamgwc.github.io/latebus/index.html";
+	},
     expand: function (event) {
       /*console.log("hi" + HTMLDivElement);
       this.style.display = "visible";
@@ -202,11 +205,12 @@ var app = new Vue({
     saveComment: function () {
       // Store "this" so we can access our Vue object inside the asynchronous then() function
       let self = this;
-      var filter = new Filter();
-      var cleanComment = filter.clean(this.busComment); //Don't be an ******
+	var filter = new Filter();
+	var cleanComment = filter.clean(this.busComment); //Don't be an ******
+	var cleanUserName = filter.clean(this.user);    
       let data = {
-        userName: this.user,
         comment: cleanComment,
+	userName: cleanUserName,
         bus: parseInt(this.currentRoute),
         location: this.position,
         arrival: false
