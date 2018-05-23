@@ -68,6 +68,7 @@ var Filter = (function() {
    * @param {string} string - Sentence to filter.
    */
   Filter.prototype.clean = function clean(string) {
+    string = string.replace(/\s/g, '');
     return string.split(/\b/).map(function(word) {
       return this.isProfane(word) ? this.replaceWord(word) : word;
     }.bind(this)).join('');
