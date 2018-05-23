@@ -93,7 +93,10 @@ var app = new Vue({
           alert("something's broken :("); 
         });
     },
-
+	closepopup: function (event) {
+		this.isWelcomePage = false;
+		window.location.href = "https://ingrahamgwc.github.io/latebus/index.html";
+	},
     expand: function (event) {
       /*console.log("hi" + HTMLDivElement);
       this.style.display = "visible";
