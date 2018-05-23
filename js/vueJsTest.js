@@ -33,6 +33,7 @@ var app = new Vue({
     busEvents: [],
     //Depends on ?route=number format
     currentRoute: document.location.search.substring(7),
+	isWelcomePage: document.location.search.substring(1) == "welcome",
     timeLeft: 0,
     buses: stopData,
     position: 0,     // GPS coords
@@ -181,10 +182,11 @@ var app = new Vue({
     saveComment: function () {
       // Store "this" so we can access our Vue object inside the asynchronous then() function
       let self = this;
-
+	var filter = new Filter();
+	var cleanComment = filter.clean(this.busComment); //Don't be an ******
       let data = {
         userName: this.user,
-        comment: this.busComment,
+        comment: cleanComment,
         bus: parseInt(this.currentRoute),
         location: this.position,
         arrival: false

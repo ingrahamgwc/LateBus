@@ -64,7 +64,11 @@ body {
 
 #map {
 	height: 400px;
-	width: 100%;
+	width: 98%;
+	margin-top: 1%;
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-bottom: 1%;
 }
 
 .flex-container {
@@ -74,7 +78,7 @@ body {
 }
   
 .flex-container > div {
-    background-color: #f1f1f1;
+    background-color: #ffea9d;
     width: 40%;
     margin: 0;
     padding-top: 10%;
@@ -83,12 +87,32 @@ body {
     font-size: 5vw;
     flex-grow:1;
     overflow: hidden;
-    border-right: 4px solid black;
-    border-bottom: 4px solid black;
+	border-top: 4px solid;
+    border-right: 4px solid;
+    border-bottom: 4px solid;
+	border-color: #efca43;
 }
 
 #commentsIcon {
     width:30%;
     float: right;
     margin-right: 5%;
+}
+
+#six {
+	border-right: 0px;
+}
+
+#three {
+	border-right: 0px;
+	border-bottom: 0px;
+}
+
+#two {
+	border-bottom: 0px;
+}
+
+a {
+	text-decoration: none;
+	color: black;
 }

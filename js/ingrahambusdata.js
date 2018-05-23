@@ -99,7 +99,7 @@ var stopData=[
           lat: 47.6905997,
           long: -122.378961
         },
-        {
+        { 
           address: "NW 85th St@ 24th AVE NW",
           schedTime: "8:25",
           predTime: "predicted time",

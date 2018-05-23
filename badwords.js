@@ -1,8 +1,6 @@
 /** list of swear words to filter for in comments from https://github.com/web-mech/badwords/blob/master/lib/lang.json
 */
-
-{
-  "words":[
+var localList = [
     "ahole",
     "anus",
     "ash0le",
@@ -463,4 +461,4 @@
     "yed",
     "zabourah"
   ]
-}
+
