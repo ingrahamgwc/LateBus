@@ -123,7 +123,6 @@ var app = new Vue({
           for(var j = 0; j < stopData[i].stops.length; j++) {
             var tempDistance = Math.sqrt(Math.pow(commentCoordinates[0] - stopData[i].stops[j].lat, 2)
                    + Math.pow(commentCoordinates[1] - stopData[i].stops[j].long, 2));
-            console.log(tempDistance + " " + shortestDistance);
             if(tempDistance < shortestDistance) { 
               shortestDistance = tempDistance;
               closestAddress = stopData[i].stops[j].address;
@@ -141,12 +140,13 @@ var app = new Vue({
       // but "self" sticks around since it was defined here. This is a "closure".
       let self = this;
 
-      fetch(serverURL + "bus-routes")
+      /*fetch(serverURL + "bus-routes")
         .then(function (response) { if (response.ok) { return response.json(); } })
         .then(function (data) {
           console.log(data);
           self.buses = data.busRoutes;
-        });
+        });*/
+        console.log(stopData[this.currentRoute]);
 
       fetch(serverURL + "events?bus=" + this.currentRoute)
         .then(function (response) { if (response.ok) { return response.json(); } })
@@ -171,13 +171,22 @@ var app = new Vue({
             events[i].address = self.getClosestAddress(events[i].location);
 
           }
+
+          //find last arrival comment
+          var lastArrival; //put a default value here
+          for(var i = 0; i < events.length; i++) {
+            if(events[i].arrival == true) {
+              console.log(events[i].arrival);
+            } 
+          }
+
+          //add predicted time to each busEvents object
           self.busEvents = events;
 
         });
     },
     // Go to the URL data has our data and display it
     loadTimeRemaining: function() {
-      console.log("hi");
 
       if (!this.position) {
         this.timeLeft = "can't figure out your location";
@@ -211,7 +220,7 @@ var app = new Vue({
 	var cleanUserName = filter.clean(this.user);    
       let data = {
         comment: cleanComment,
-	userName: cleanUserName,
+	      userName: cleanUserName,
         bus: parseInt(this.currentRoute),
         location: this.position,
         arrival: false
@@ -242,8 +251,11 @@ var app = new Vue({
   mounted: function () {
     let self = this;
     //depends on the url being commentsTest
-    if (document.location.toString().includes("comments.html")) {
-      this.loadBusRoutes();
+    // this breaks everything but why?: 
+    if (document.location.toString().includes("comments.html") || document.location.toString().includes("busroute.html")) {
+    //if (document.location.toString().includes("comments.html")) {
+
+    this.loadBusRoutes();
       // setinterval function
       setInterval(function () {
         this.loadBusRoutes();
