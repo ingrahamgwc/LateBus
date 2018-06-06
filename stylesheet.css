@@ -85,7 +85,8 @@ body {
 	border-color: #efca43;
 	background-color: #ffea9d;
 	border-width: 5px 5px 5px 5px;
-	z-index:99
+	z-index:99;
+	font-size:3vw;
 	}
 #popup button {
 	position: relative;
