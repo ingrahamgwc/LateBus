@@ -84,7 +84,6 @@ body {
 	border-color: #efca43;
 	background-color: #ffea9d;
 	border-width: 5px 5px 5px 5px;
-	font-size: 150%;
 	z-index:99;
 	overflow: scroll;
 }
