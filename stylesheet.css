@@ -85,6 +85,7 @@ body {
 	border-color: #efca43;
 	background-color: #ffea9d;
 	border-width: 5px 5px 5px 5px;
+	z-index:99
 	}
 #popup button {
 	position: relative;
@@ -96,6 +97,7 @@ body {
 	margin-left: 40%;
 	margin-right: 40%;
 	margin-bottom: 5%
+	
 }
 #popup button:hover {
     background-color: #ffea9d;
