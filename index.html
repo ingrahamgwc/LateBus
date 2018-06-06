@@ -12,6 +12,7 @@
 <body>
 	<div id="app">
 		<div id = "popup" v-show="isWelcomePage"> 
+			
 			<p> &emsp; Welcome to LateBus!                                                                        
 				<ul>
 					<li>Select your route to view your stop.</li>
@@ -19,8 +20,13 @@
 					<li>Each bus has its own comments, please keep your comments polite!</li>
 				</ul>
 			</p>
+			
 			<button v-on:click="closepopup"> Cool! </button>
+			
+		<!-- <div class="overlay"></div> !-->
+		
 		</div>
+		
 		<div class="headerthing">
 			<navbar></navbar>
 			<h1>LateBus</h1>
