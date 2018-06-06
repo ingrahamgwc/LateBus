@@ -33,7 +33,7 @@ var app = new Vue({
     busEvents: [],
     //Depends on ?route=number format
     currentRoute: document.location.search.substring(7),
-	isWelcomePage: document.location.search.substring(1) == "welcome",
+	  isWelcomePage: document.location.search.substring(1) == "welcome",
     timeLeft: 0,
     buses: stopData,
     position: 0,     // GPS coords
@@ -117,7 +117,7 @@ var app = new Vue({
       var closestAddress = "no address found";
       for(var i = 0; i < stopData.length; i++) {
         //only check correct route
-        if(stopData[i].name = this.currentRoute) {
+        if(stopData[i].name == this.currentRoute) {
           console.log(stopData[i]);
           //loop through stop addresses
           for(var j = 0; j < stopData[i].stops.length; j++) {
@@ -146,7 +146,12 @@ var app = new Vue({
           console.log(data);
           self.buses = data.busRoutes;
         });*/
-        console.log(stopData[this.currentRoute]);
+        /*for (var i = 0; i < stopData.length; i++) {
+          if(stopData[i].name = this.currentRoute) {
+            self.buses = stopData[i].stops;
+            i = stopData.length;
+          }
+        }*/
 
       fetch(serverURL + "events?bus=" + this.currentRoute)
         .then(function (response) { if (response.ok) { return response.json(); } })
