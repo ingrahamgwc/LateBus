@@ -85,7 +85,6 @@ body {
 	background-color: #ffea9d;
 	border-width: 5px 5px 5px 5px;
 	z-index:99;
-	font-size:8vmax;
 	overflow: scroll;
 }
 #popup button {
