@@ -58,7 +58,6 @@ var app = new Vue({
     },
     // this is called when the user pushes the "my bus is here" button is pushed. 
     arrivalReport: function (event) {
-      console.log("hi world");
       // alert("GET ON THE BUS!");
 
       // Store "this" so we can access our Vue object inside the asynchronous then() function
@@ -84,7 +83,8 @@ var app = new Vue({
         body: JSON.stringify(data)
       })
         .then(function (response) {
-          console.log(response); self.debug = response.json();
+          console.log(response); 
+          self.debug = response.json();
           self.loadBusRoutes();
           window.location.href = "https://ingrahamgwc.github.io/latebus/comments.html?route=" + self.currentRoute;
         })
@@ -118,7 +118,6 @@ var app = new Vue({
       for(var i = 0; i < stopData.length; i++) {
         //only check correct route
         if(stopData[i].name == this.currentRoute) {
-          console.log(stopData[i]);
           //loop through stop addresses
           for(var j = 0; j < stopData[i].stops.length; j++) {
             var tempDistance = Math.sqrt(Math.pow(commentCoordinates[0] - stopData[i].stops[j].lat, 2)
@@ -162,13 +161,11 @@ var app = new Vue({
             }
           }
           events.sort(compare);
-          //self.busEvents = events;
 
           //add address to busEvents object
           for(var i = 0; i < events.length; i++) {
             events[i].address = "no address found";
             events[i].address = self.getClosestAddress(events[i].location);
-
           }
 
           //find last arrival comment
@@ -181,14 +178,10 @@ var app = new Vue({
               //find scheduled time for that address
               for(var k = 0; k < stopData.length; k++) {
                 //only check correct route
-                var s = stopData[k].name;
-                var c = self.currentRoute;
                 if(stopData[k].name == self.currentRoute) {
-                  console.log(stopData[k]);
                   //loop through stop addresses
                   for(var j = 0; j < stopData[k].stops.length; j++) {
                     if(stopData[k].stops[j].address == events[i].address) {
-                      console.log(stopData[k].stops[j].address + ", " + events[i].address);
                       stopData[k].stops[j].predTime = stopData[k].stops[j].schedTime;
 
                       //make scheduled time into date data type
@@ -196,16 +189,13 @@ var app = new Vue({
                       var timeStr = stopData[k].stops[j].schedTime;
                       var hr = parseInt(timeStr.substring(0,timeStr.indexOf(":")));
                       var min = parseInt(timeStr.substring(timeStr.indexOf(":") + 1));
-                      console.log(min);
                       schedDate.setHours(hr);
                       schedDate.setMinutes(min);
-                      console.log(schedDate.getHours());
                       var schedDateMs = Date.parse(schedDate);
 
                       var eventDate = Date.parse(events[i].time);
 
                       var currentDiff = schedDateMs - eventDate;
-                      console.log(schedDateMs - eventDate);
                       if(Math.abs(currentDiff) > Math.abs(timeDiff)) { //should change this at some point - pretty wrong. 
                         timeDiff = currentDiff;
                       }
@@ -213,9 +203,7 @@ var app = new Vue({
                     }
                   }
                 }
-              }
-
-              
+              } 
             } 
           }
 
@@ -234,13 +222,11 @@ var app = new Vue({
                 var timeStr = stopData[k].stops[j].schedTime;
                 var hr = parseInt(timeStr.substring(0,timeStr.indexOf(":")));
                 var min = parseInt(timeStr.substring(timeStr.indexOf(":") + 1));
-                console.log(min);
                 schedDate.setHours(hr);
                 schedDate.setMinutes(min);
-                console.log(schedDate.getHours());
                 var schedDateMs = Date.parse(schedDate);
 
-                var diffDate = new Date(schedDateMs -  timeDiff)
+                var diffDate = new Date(schedDateMs -  timeDiff);
                 stopData[k].stops[j].predTime = diffDate.getHours() + ":" + diffDate.getMinutes();
               }
             }
@@ -302,7 +288,8 @@ var app = new Vue({
         body: JSON.stringify(data)
       })
         .then(function (response) {
-          console.log(response); self.debug = response.json();
+          console.log(response); 
+          self.debug = response.json();
           self.loadBusRoutes()
         })
         .catch(function (response) { console.error(response); });
