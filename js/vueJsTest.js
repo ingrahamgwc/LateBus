@@ -146,12 +146,6 @@ var app = new Vue({
           console.log(data);
           self.buses = data.busRoutes;
         });*/
-        /*for (var i = 0; i < stopData.length; i++) {
-          if(stopData[i].name = this.currentRoute) {
-            self.buses = stopData[i].stops;
-            i = stopData.length;
-          }
-        }*/
 
       fetch(serverURL + "events?bus=" + this.currentRoute)
         .then(function (response) { if (response.ok) { return response.json(); } })
@@ -179,13 +173,78 @@ var app = new Vue({
 
           //find last arrival comment
           var lastArrival; //put a default value here
+          var timeDiff = 0; //time difference in milliseconds
+
           for(var i = 0; i < events.length; i++) {
-            if(events[i].arrival == true) {
-              console.log(events[i].arrival);
+            if(events[i].arrival == true && events[i].address != "no address found") {
+
+              //find scheduled time for that address
+              for(var k = 0; k < stopData.length; k++) {
+                //only check correct route
+                var s = stopData[k].name;
+                var c = self.currentRoute;
+                if(stopData[k].name == self.currentRoute) {
+                  console.log(stopData[k]);
+                  //loop through stop addresses
+                  for(var j = 0; j < stopData[k].stops.length; j++) {
+                    if(stopData[k].stops[j].address == events[i].address) {
+                      console.log(stopData[k].stops[j].address + ", " + events[i].address);
+                      stopData[k].stops[j].predTime = stopData[k].stops[j].schedTime;
+
+                      //make scheduled time into date data type
+                      var schedDate = new Date();
+                      var timeStr = stopData[k].stops[j].schedTime;
+                      var hr = parseInt(timeStr.substring(0,timeStr.indexOf(":")));
+                      var min = parseInt(timeStr.substring(timeStr.indexOf(":") + 1));
+                      console.log(min);
+                      schedDate.setHours(hr);
+                      schedDate.setMinutes(min);
+                      console.log(schedDate.getHours());
+                      var schedDateMs = Date.parse(schedDate);
+
+                      var eventDate = Date.parse(events[i].time);
+
+                      var currentDiff = schedDateMs - eventDate;
+                      console.log(schedDateMs - eventDate);
+                      if(Math.abs(currentDiff) > Math.abs(timeDiff)) { //should change this at some point - pretty wrong. 
+                        timeDiff = currentDiff;
+                      }
+
+                    }
+                  }
+                }
+              }
+
+              
             } 
           }
 
           //add predicted time to each busEvents object
+          for(var k = 0; k < stopData.length; k++) {
+            //only check correct route
+            var s = stopData[k].name;
+            var c = self.currentRoute;
+            if(stopData[k].name == self.currentRoute) {
+              console.log(stopData[k]);
+              //loop through stop addresses
+              for(var j = 0; j < stopData[k].stops.length; j++) {
+
+                //make scheduled time into date data type
+                var schedDate = new Date();
+                var timeStr = stopData[k].stops[j].schedTime;
+                var hr = parseInt(timeStr.substring(0,timeStr.indexOf(":")));
+                var min = parseInt(timeStr.substring(timeStr.indexOf(":") + 1));
+                console.log(min);
+                schedDate.setHours(hr);
+                schedDate.setMinutes(min);
+                console.log(schedDate.getHours());
+                var schedDateMs = Date.parse(schedDate);
+
+                var diffDate = new Date(schedDateMs -  timeDiff)
+                stopData[k].stops[j].predTime = diffDate.getHours() + ":" + diffDate.getMinutes();
+              }
+            }
+          }
           self.busEvents = events;
 
         });
@@ -220,9 +279,9 @@ var app = new Vue({
     saveComment: function () {
       // Store "this" so we can access our Vue object inside the asynchronous then() function
       let self = this;
-	var filter = new Filter();
-	var cleanComment = filter.clean(this.busComment); //Don't be an ******
-	var cleanUserName = filter.clean(this.user);    
+	    var filter = new Filter();
+	    var cleanComment = filter.clean(this.busComment); //Don't be an ******
+	    var cleanUserName = filter.clean(this.user);    
       let data = {
         comment: cleanComment,
 	      userName: cleanUserName,
